@@ -1,4 +1,4 @@
-/** Requires JQuery **/
+/** Dependencies: JQuery, underscore (or lodash) **/
 
 function printTable(splitClass) {
   var about = {
@@ -10,8 +10,6 @@ function printTable(splitClass) {
     max_page_height = 550,  // change to get dynamically
     splits,  // how many times to split the table
     table_height,
-    elem,
-    i,
     tr_sum,
     $t,
     $cbody,
@@ -21,13 +19,12 @@ function printTable(splitClass) {
 
   if (splitClass) {
     if (typeof splitClass === "string") {
-      elem = $('table.' + splitClass);
-      table_height = elem.height();
+      table_height = $('table.' + splitClass).height();
 
       if (table_height > max_page_height) {
         splits = Math.ceil(table_height / max_page_height);
 
-        for (i = 1; i < splits; i = i + 1) {
+        _.times(splits - 1, function () {
           tr_sum = 0;
           $t = $('table.' + splitClass);
 
@@ -47,8 +44,9 @@ function printTable(splitClass) {
           $br = $('<div></div>')
             .css('page-break-before', 'always');
           $br.insertAfter($t);
+          $t.addClass('printTable');
           copy.insertAfter($br);
-        }
+        });
       }
     }
   } else {
