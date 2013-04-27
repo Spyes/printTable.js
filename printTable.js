@@ -33,7 +33,7 @@
       Version: 0.5,
       Author: "Lewis Nitzberg",
       Created: "April 2013",
-      Updated: "25 Apr 2013"
+      Updated: "27 Apr 2013"
     },
       table_height,
       tr_sum,
