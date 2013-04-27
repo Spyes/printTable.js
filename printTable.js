@@ -1,4 +1,4 @@
-/** Dependencies: JQuery, underscore (or lodash) **/
+/** Dependencies: jQuery, underscore (or lodash) **/
 
 (function($) {
   var defaults = { print: true,
