@@ -14,18 +14,6 @@
     try {
       iframe = document.createElement('iframe');
       document.body.appendChild(iframe);
-/*
-      var styleTag = document.createElement('style');
-      var head = document.getElementsByTagName('head')[0];
-      head.appendChild(styleTag);
-      var sheet = styleTag.sheet ? styleTag.sheet : styleTag.styleSheet;
-
-      if (sheet.insertRule) {
-        sheet.insertRule("@page {size: landscape;}", 0);
-      } else {
-        sheet.addRule("@page", "size: landscape", 0);
-      }
-*/
       $(iframe).attr({style: iframeStyle});
       iframe.doc = null;
       iframe.doc = iframe.contentDocument ? iframe.contentDocument : (iframe.contentWindow ? iframe.contentWindow.document : iframe.document);
