@@ -3,8 +3,8 @@
 (function($) {
   var defaults = { print: true,
                    repeat_header: true,
-                   orientation: 'landscape',
-                   max_page_height: 550 },
+                   orientation: 'portrait',
+                   max_page_height: 780 },
     settings = {};
 
   function Iframe() {
@@ -53,8 +53,8 @@
     writeDoc = f.doc;
     printWindow = f.contentWindow || f;
     $("<style media='print'> @page {size: " + settings.orientation + ";}</style>").appendTo(writeDoc.getElementsByTagName('head')[0]);
-    if (settings.orientation === 'portrait') {
-      settings.max_page_height = 780;
+    if (settings.orientation === 'landscape') {
+      settings.max_page_height = 550;
     }
 
     _.each($(this), function (table) {
