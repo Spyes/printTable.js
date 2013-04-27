@@ -1,9 +1,7 @@
 /** Dependencies: JQuery, underscore (or lodash) **/
 
 (function($) {
-  var defaults = { split_class: "splitTable",
-                   print_class: "printTable",
-                   print: true,
+  var defaults = { print: true,
                    repeat_header: true,
                    max_page_height: 550 },
     settings = {};
