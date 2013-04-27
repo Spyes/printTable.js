@@ -3,6 +3,7 @@
 (function($) {
   var defaults = { print: true,
                    repeat_header: true,
+                   orientation: 'landscape',
                    max_page_height: 550 },
     settings = {};
 
@@ -13,6 +14,18 @@
     try {
       iframe = document.createElement('iframe');
       document.body.appendChild(iframe);
+/*
+      var styleTag = document.createElement('style');
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(styleTag);
+      var sheet = styleTag.sheet ? styleTag.sheet : styleTag.styleSheet;
+
+      if (sheet.insertRule) {
+        sheet.insertRule("@page {size: landscape;}", 0);
+      } else {
+        sheet.addRule("@page", "size: landscape", 0);
+      }
+*/
       $(iframe).attr({style: iframeStyle});
       iframe.doc = null;
       iframe.doc = iframe.contentDocument ? iframe.contentDocument : (iframe.contentWindow ? iframe.contentWindow.document : iframe.document);
@@ -36,7 +49,7 @@
     },
       table_height,
       tr_sum,
-      table_index,
+      page_count = 1,
       $t,
       $cbody,
       $chead,
@@ -51,11 +64,14 @@
     f = new Iframe();
     writeDoc = f.doc;
     printWindow = f.contentWindow || f;
+    $("<style media='print'> @page {size: " + settings.orientation + ";}</style>").appendTo(writeDoc.getElementsByTagName('head')[0]);
+    if (settings.orientation === 'portrait') {
+      settings.max_page_height = 780;
+    }
 
     _.each($(this), function (table) {
       $t = $(table);
       table_height = $t.height();
-      table_index = 0;
       if (table_height > settings.max_page_height) {
         tr_sum = 0;
         copy = $t.clone();
@@ -68,14 +84,17 @@
             tr_sum = 0;
 
             // move old table to iframe
-            if (table_index > 0) {
+            if (page_count > 1) {
               copy.css('page-break-before', 'always');
             }
             copy.appendTo(writeDoc.body);
-            table_index += 1;
+            page_count = page_count + 1;
 
             // create a new table
             copy = $t.clone();
+            if (!settings.repeat_header) {
+              copy.find('thead').remove();
+            }
             copy.find('tbody > tr').remove();
             $cbody = copy.find('tbody');
           } else {

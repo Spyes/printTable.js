@@ -1,0 +1,76 @@
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js "></script>
+<script src="https://raw.github.com/bestiejs/lodash/v1.2.0/dist/lodash.min.js"></script>
+<script src="printTable.js"></script>
+</head>
+<body>
+<table id="tableID" class="table splitTable">
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+      <th>Header 3</th>
+      <th>Header 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <script>
+        var i,
+          text = ["This is a short text",
+          "This is a longer text<br/>That spans two lines",
+          "This is a text that<br/>spans 3 lines<br/>but no more",
+          "This is the longest text<br/>It spans 4 lines<br/>And stuff y'know?<br/>Y'know.",
+          "This is an<br/>even longer text<br/>The lie here is that it<br/>isn't necessarly longer<br/>Although in all actuality:<br/>IT IS!"];
+        for (i = 0; i < 90; i++) {
+          if ((i % 4) === 0) {
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td>" + text[Math.floor(Math.random()*5)] + "</td>");
+          } else {
+            document.write("<td>" + text[i%4] + "</td>");
+          }
+        }
+      </script>
+    </tr>
+  </tbody>
+</table>
+
+<table id="tableID2" class="table splitTable">
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+      <th>Header 3</th>
+      <th>Header 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <script>
+        var i,
+          text = ["This is a short text",
+          "This is a longer text<br/>That spans two lines",
+          "This is a text that<br/>spans 3 lines<br/>but no more",
+          "This is the longest text<br/>It spans 4 lines<br/>And stuff y'know?<br/>Y'know.",
+          "This is an<br/>even longer text<br/>The lie here is that it<br/>isn't necessarly longer<br/>Although in all actuality:<br/>IT IS!"];
+        for (i = 0; i < 90; i++) {
+          if ((i % 4) === 0) {
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td>" + text[Math.floor(Math.random()*5)] + "</td>");
+          } else {
+            document.write("<td>" + text[i%4] + "</td>");
+          }
+        }
+      </script>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  $('.splitTable').printTable({orientation: "portrait", repeat_header: true}); 
+</script>
+</body>
+</html>

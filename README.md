@@ -15,5 +15,6 @@ $(".table-for-printing").printTable(options)
 ```
 
 ##Options
+* **`orientation`**: the page orientation: "landscape" or "portrait". (default: "landscape")
 * **`repeat_header`**: repeat header of table in each page. (default: true)
 * **`max_page_height`**: the printed page height. Leave deafult unless you know exactly what size you need. (default: 550)
