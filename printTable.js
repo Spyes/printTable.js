@@ -30,7 +30,7 @@
 
   $.fn.printTable = function (options) {
     var about = {
-      Version: 0.2,
+      Version: 0.5,
       Author: "Lewis Nitzberg",
       Created: "April 2013",
       Updated: "25 Apr 2013"
