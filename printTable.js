@@ -94,7 +94,11 @@
       }
     });
 
-    printWindow.focus();
-    printWindow.print();
+    if (settings.print) {
+      printWindow.focus();
+      printWindow.print();
+    } else {
+      return printWindow;
+    }
   }
 })(jQuery);

@@ -2,7 +2,7 @@
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js "></script>
 <script src="https://raw.github.com/bestiejs/lodash/v1.2.0/dist/lodash.min.js"></script>
-<script src="printTable.min.js"></script>
+<script src="printTable.js"></script>
 <script>
   var i,
     text = ["This is a short text",
@@ -66,7 +66,11 @@
 </table>
 
 <script>
-  $('.splitTable').printTable({orientation: "portrait", repeat_header: true}); 
+  var printWindow = $('.splitTable').printTable({orientation: "portrait", repeat_header: true, print: false}); 
+  $(printWindow.document.body).prepend("<div id='test'>This div will appear before the split table</div>");
+
+  printWindow.focus();
+  printWindow.print();
 </script>
 </body>
 </html>
